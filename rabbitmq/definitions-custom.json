@@ -1,0 +1,51 @@
+{
+ "users":[
+   {
+    "name": "guest",
+    "password":"guest",
+    "tags":"none"
+   },
+   {
+    "name": "mike",
+    "password":"password",
+    "tags":"administrator"
+   }
+ ],
+
+ "vhosts": [
+   {
+     "name": "/"
+   }
+ ],
+ "permissions": [
+   {
+    "name": "guest",
+    "vhost": "/",
+    "configure": ".*",
+    "write": ".*",
+    "read": ".*"
+   },
+   {
+    "name": "mike",
+    "vhost": "/",
+    "configure": ".*",
+    "write": ".*",
+    "read":".*"
+   }
+ ],
+ "parameters": [],
+ "policies": [
+   {
+     "vhost": "/",
+     "name": "mirrorqueues",
+     "apply-to": "queues",
+     "pattern": "^.*",
+     "definition": {
+        "ha-mode": "exactly",
+        "ha-params": 2,
+        "ha-sync-mode": "automatic"
+      }
+   }
+ ]
+
+}
